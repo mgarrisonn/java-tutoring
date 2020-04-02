@@ -13,6 +13,10 @@ public class Phone implements Products {
         this.screenSize = screenSize;
     }
 
+    public Phone(String number){
+        this.number = number;
+    }
+
     public double getScreenSize() {
         return screenSize;
     }
@@ -60,4 +64,5 @@ public class Phone implements Products {
     public void setStock(int stock) {
         this.stock = stock;
     }
+
 }

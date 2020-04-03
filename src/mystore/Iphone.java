@@ -11,5 +11,8 @@ public class Iphone extends Phone {
         return true;
     }
 
+    public void voiceActivatedCall(String contactName){
+        System.out.println("Ok Siri. Call " + contactName);
+    }
 
 }

@@ -1,6 +1,6 @@
 package mystore;
 
-public class Phone implements Products {
+public abstract class Phone implements Products {
 
     protected String number;
     protected double screenSize;
@@ -64,5 +64,7 @@ public class Phone implements Products {
     public void setStock(int stock) {
         this.stock = stock;
     }
+
+    public abstract void voiceActivatedCall(String contactName);
 
 }

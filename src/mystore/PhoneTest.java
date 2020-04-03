@@ -5,14 +5,13 @@ public class PhoneTest {
     public static void main(String[] args) {
         Android testPhoneOne = new Android("867-5309", 50);
 
-        System.out.println("testPhoneOne.getOS() = " + testPhoneOne.getOS());
-        System.out.println("testPhoneOne.getNumber() = " + testPhoneOne.getNumber());
+        Iphone testPhoneTwo = new Iphone("123-4567", 60);
 
-        testPhoneOne.callNumber();
+        testPhoneOne.voiceActivatedCall("Bobert");
+        testPhoneTwo.voiceActivatedCall("Robert");
 
-        testPhoneOne.setPrice(100.99);
-
-        System.out.println("testPhoneOne.getPrice() = " + testPhoneOne.getPrice());
+        YeOldePhone testPhoneThree = new YeOldePhone("444-4444");
+        testPhoneThree.voiceActivatedCall("Bill");
     }
 
 }

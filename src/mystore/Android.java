@@ -7,7 +7,7 @@ public class Android extends Phone {
         this.OS = "Android";
     }
 
-    public void voiceActivatedCall(String contactName) {
+    public void voiceActivatedCall(String contactName){
         System.out.println("Ok Google. Call " + contactName);
     }
 }

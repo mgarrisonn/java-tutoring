@@ -19,4 +19,9 @@ public class Clerk extends Human {
     public void receiveComputer(Computer incomingBrokenComputer, ArrayList<Computer> thisStoresBrokenComputerPile){
         thisStoresBrokenComputerPile.add(incomingBrokenComputer);
     }
+
+    public void customerService(Customer customerCurrentlyComplaining, ArrayList<Computer> thisStoresBrokenPile){
+        Computer thisCustomersComputer = customerCurrentlyComplaining.getPersonalComputer();
+        thisStoresBrokenPile.add(thisCustomersComputer);
+    }
 }

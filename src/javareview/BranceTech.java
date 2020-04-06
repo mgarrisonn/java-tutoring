@@ -23,13 +23,14 @@ public class BranceTech {
     private static Repairer johnny = new Repairer("Johnny");
 
     public static void main(String[] args) {
+        Computer jimmysComputer = new Computer("Lapple", false, true);
+        Customer jimmy = new Customer("Jimmy", jimmysComputer);
         Computer testComputerOne = new Computer("Dell", false, true);
         Computer testComputerTwo = new Computer("Alienware", false, true);
-        Computer testComputerThree = new Computer("Lapple", false, true);
 
         brance.receiveComputer(testComputerOne, brokenComputers);
         brance.receiveComputer(testComputerTwo, brokenComputers);
-        brance.receiveComputer(testComputerThree, brokenComputers);
+        brance.customerService(jimmy, brokenComputers);
 
         for(Computer computer : brokenComputers){
             System.out.println("computer.getName() = " + computer.getName());

@@ -32,6 +32,7 @@ public class Computer implements Electronic {
     }
 
     public void turnOn(){
+        // Every time the computer's isPowerOn property is changed from false to true there is a 20% chance that is is no longer broken.
         if(this.isBroken && !this.isPowerOn){
             this.isPowerOn = true;
             int chanceToFix = (int)Math.floor(Math.random() * 5);

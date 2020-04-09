@@ -6,7 +6,7 @@ public class CarTest {
         Car testCarTwo = new Car("Pinto", "Ford");
 
         System.out.println("Car.numberOfCars = " + Car.getNumberOfCars());
-        Car.showAllCars();
+        System.out.println(Car.getNumberOfCars());
 
         Car testCarThree = new Car("Gremlin", "Ford");
 

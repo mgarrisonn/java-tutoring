@@ -2,8 +2,8 @@ package mystore;
 
 public class Android extends Phone {
 
-    public Android(String number, double screenSize){
-        super(number, screenSize);
+    public Android(String androidNumber, double androidScreenSize){
+        super(androidNumber, androidScreenSize);
         this.OS = "Android";
     }
 

@@ -9,7 +9,6 @@ public class Regex {
     private static PasswordValidator validator = new PasswordValidator();
 
     public static void main(String[] args) {
-        fizzBuzz("");
 
     }
 
@@ -26,6 +25,22 @@ public class Regex {
         }
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static void fizzBuzz(String currentOutput){
 

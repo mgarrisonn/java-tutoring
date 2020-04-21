@@ -18,11 +18,6 @@ public class PasswordValidator {
         pattern = Pattern.compile(PASSWORD_PATTERN);
     }
 
-    /**
-     * Validate password with regular expression
-     * @param password password for validation
-     * @return true valid password, false invalid password
-     */
     public boolean validate(final String password){
 
         matcher = pattern.matcher(password);

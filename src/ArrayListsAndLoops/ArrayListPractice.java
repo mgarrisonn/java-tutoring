@@ -1,10 +1,16 @@
 package ArrayListsAndLoops;
 
+import OOPReview.User;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ArrayListPractice {
+
     // empty so far []
     private static ArrayList<String> colors = new ArrayList<>();
+    private static ArrayList<User> userList = new ArrayList<>();
+    private static HashMap<String, User> userMap = new HashMap<>();
 
     public static void main(String[] args) {
         // .add is a method to put new elements into the ArrayList
@@ -15,7 +21,7 @@ public class ArrayListPractice {
         // Anything added will be put at the end of the ArrayList
 
         colors.add("blue");
-        //["green", "blue"
+        //["green", "blue"]
 
         // ArrayLists let us add to the list at specific indexes
         // If I want to add red in between green and blue I add an int to specify what index I want to add the new element
@@ -41,14 +47,35 @@ public class ArrayListPractice {
         // ArrayLists use the .remove()
 
         // We pass .remove an index number and it will remove the element at that index
-        colors.remove(2);
+//        colors.remove(2);
         // colors = ["green", "red"]
 
 
         // .remove is overloaded so you can remove the an element the first time the element is found
-        colors.remove("red");
+//        colors.remove("red");
         // colors = ["green"]
 
+        User brance = new User("javamancer", "brance@codeup.com", "abc123");
+        User jasmine = new User("mirafaun", "jasmine@gmail.com", "def456");
+
+        userMap.put("branceKey", brance);
+        userMap.put("jasmineKey", jasmine);
+
+        userList.add(brance);
+        userList.add(jasmine);
+
+
+//        for(int i = 0; i < colors.size() - 1; i++){
+//            System.out.println(colors.get(i));
+//        }
+
+        for(String placeholder : colors){
+            System.out.println(placeholder);
+        }
+
+        for(User placeholder : userList){
+            System.out.println("placeholder.getUsername() = " + placeholder.getUsername());
+        }
 
     }
 }

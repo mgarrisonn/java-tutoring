@@ -49,5 +49,6 @@ public class ArrayListPractice {
         colors.remove("red");
         // colors = ["green"]
 
+
     }
 }

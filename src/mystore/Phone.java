@@ -1,6 +1,10 @@
 package mystore;
 
 public abstract class Phone implements Products {
+    // private - doesn't leave class
+    // package protected - class, package : default
+    // protected - class, subclasses, package
+    // public - anyone can access
 
     protected String number;
     protected double screenSize;
@@ -45,22 +49,18 @@ public abstract class Phone implements Products {
         this.OS = OS;
     }
 
-    @Override
     public double getPrice() {
         return price;
     }
 
-    @Override
     public void setPrice(double price) {
         this.price = price;
     }
 
-    @Override
     public int getStock() {
         return stock;
     }
 
-    @Override
     public void setStock(int stock) {
         this.stock = stock;
     }

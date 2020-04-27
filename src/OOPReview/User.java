@@ -10,6 +10,7 @@ public class User {
     private ArrayList<User> friends;
     private boolean isAdmin;
 
+
     // Default constructor
     public User() {
     }

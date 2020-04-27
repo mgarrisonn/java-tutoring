@@ -7,6 +7,10 @@ public class Iphone extends Phone {
         this.OS = "iOS";
     }
 
+    public double getPrice(){
+        return price * 4;
+    }
+
     public boolean facialUnlock(String face){
         return true;
     }

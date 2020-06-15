@@ -13,9 +13,7 @@ public class Person {
         this.age = newPersonAge;
     }
 
-    public String getFirstName(){
-        return formatName(this.firstName);
-    }
+    public String getFirstName(){ return formatName(this.firstName); }
 
     public void setFirstName(String thisPersonsFirstName){
         this.firstName = thisPersonsFirstName;

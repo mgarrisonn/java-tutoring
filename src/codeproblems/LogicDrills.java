@@ -39,11 +39,16 @@ public class LogicDrills {
 
     // from Brance
 
-    // Write a function that takes stupid MySQL dates 1234-56-78 and turns them into normal dates 78-56-1234
+    // Write a function that takes stupid MySQL dates (example: 1234-56-78) and turns them into normal dates (example: 78-56-1234)
 
     // Write a function that accepts an array of strings and a string. if the array doesn't contain the given string add the string to the array. Return the array either way.
 
     // write a function that accepts a matrix of integers and returns the array from the matrix with the highest sum of all elements
+    // example [
+    //          [1, 2, 3],
+    //          [4, 5, 6],
+    //          [7, 8, 9]     <----- return this array because 7 + 8 + 9 the highest sum of all elements
+    //         ]
 
 
 

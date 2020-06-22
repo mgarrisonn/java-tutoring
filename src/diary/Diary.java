@@ -99,6 +99,19 @@ public class Diary {
         return isDuplicate;
     }
 
+    public void showPageByDate(){
+        System.out.println("Enter the date of the page you want to see.");
+        String selectedDate = getDate();
+        for(Page singlePage : this.pages){
+            if(singlePage.getDate().equals(selectedDate)){
+                System.out.println(singlePage.getDate());
+                System.out.println("==================================================================");
+                System.out.println(singlePage.getContent());
+                System.out.println("==================================================================\n");
+            }
+        }
+    }
+
     public List<Page> getPages() {
         return pages;
     }

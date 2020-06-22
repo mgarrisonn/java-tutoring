@@ -25,7 +25,7 @@ public class DiaryApp {
                     myDiary.showAllPages();
                     break;
                 case 2:
-                    System.out.println("TBD view page by date");
+                    myDiary.showPageByDate();
                     break;
                 case 3:
                     myDiary.addPage();

@@ -1,24 +1,18 @@
 package mystore;
 
-public abstract class Phone implements Products {
-    // private - doesn't leave class
-    // package protected - class, package : default
-    // protected - class, subclasses, package
-    // public - anyone can access
+public abstract class Phone {
+    private double screenSize;
+    private String number;
+    private String model;
+    protected String Os;
 
-    protected String number;
-    protected double screenSize;
-    protected String OS;
-    protected double price;
-    protected int stock;
-
-    public Phone(String number, double screenSize){
-        this.number = number;
+    public Phone(double screenSize, String number, String model){
         this.screenSize = screenSize;
+        this.number = number;
+        this.model = model;
     }
 
-    public Phone(String number){
-        this.number = number;
+    public Phone() {
     }
 
     public double getScreenSize() {
@@ -37,34 +31,20 @@ public abstract class Phone implements Products {
         this.number = number;
     }
 
-    public void callNumber(){
-        System.out.println("Calling phone number " + number);
+    public String getModel() {
+        return model;
     }
 
-    public String getOS() {
-        return OS;
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    public void setOS(String OS) {
-        this.OS = OS;
+    public void makeCall(Phone phoneToCall){
+        System.out.println("Calling: " + phoneToCall.getNumber() + ". From number " + this.number);
     }
 
-    public double getPrice() {
-        return price;
-    }
+    public abstract String getOs();
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-
-    public abstract void voiceActivatedCall(String contactName);
+    public abstract void makeVoiceCall(String name);
 
 }

@@ -1,22 +1,36 @@
 package mystore;
 
-public class Iphone extends Phone {
+public class Iphone extends Phone implements Product {
+    private double price;
+    private int stock;
 
-    public Iphone(String number, double sS) {
-        super(number, sS);
-        this.OS = "iOS";
+    public Iphone(double screenSize, String number, String model) {
+        super(screenSize, number, model);
+        this.Os = "iOS";
     }
 
-    public double getPrice(){
+    @Override
+    public String getOs() {
+        return Os;
+    }
+
+    @Override
+    public double getPrice() {
         return price * 4;
     }
 
-    public boolean facialUnlock(String face){
-        return true;
+    @Override
+    public int getStock() {
+        return stock;
     }
 
-    public void voiceActivatedCall(String contactName){
-        System.out.println("Ok Siri. Call " + contactName);
+    @Override
+    public void setStock(int newStock) {
+        this.stock = newStock;
     }
 
+    @Override
+    public void makeVoiceCall(String name) {
+        System.out.println("Hey Siri. Call " + name);
+    }
 }

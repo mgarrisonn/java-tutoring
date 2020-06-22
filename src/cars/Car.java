@@ -35,16 +35,13 @@ public class Car {
     }
 
     public static int getNumberOfCars(){
-        return Car.numberOfCars;
+        return numberOfCars;
     }
 
     public static void showAllCars(){
         for(Car car : allCars){
-            System.out.println("car.getName() = " + car.getName());
-            System.out.println("car.getManufacturer() = " + car.getManufacturer());
+            System.out.println(car.getName() + " | " + car.getManufacturer());
         }
     }
-
-    private double pi = Math.PI;
 
 }

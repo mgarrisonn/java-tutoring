@@ -1,28 +1,12 @@
 package mystore;
 
 public class PhoneTest {
-
     public static void main(String[] args) {
-        Android testPhoneOne = new Android("867-5309", 50);
+        Android myAndroid = new Android(40.5, "210-123-4567", "Galaxy SXX");
+        Iphone myIphone = new Iphone(40.5, "210-456-7890", "6S");
 
-        Iphone testPhoneTwo = new Iphone("123-4567", 60);
+        Phone genericPhone = new Android(50.5, "111-123-4567", "Galaxy SXX");
 
-//        testPhoneOne.voiceActivatedCall("Bobert");
-//        testPhoneTwo.voiceActivatedCall("Robert");
-
-        YeOldePhone testPhoneThree = new YeOldePhone("444-4444");
-//        testPhoneThree.voiceActivatedCall("Bill");
-
-        Android newestTest = new Android("210-234-5678", 4.5);
-        Phone secondNewestTest = new Android("123-456-7890", 7.80);
-        Iphone thirdNewestTest = new Iphone("345-374-7353", 40);
-
-        thirdNewestTest.setPrice(300);
-        secondNewestTest.setPrice(400);
-
-        System.out.println("thirdNewestTest.getPrice() = " + thirdNewestTest.getPrice());
-        System.out.println("secondNewestTest.getPrice() = " + secondNewestTest.getPrice());
-
+        myAndroid.makeCall(myIphone);
     }
-
 }

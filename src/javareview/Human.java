@@ -1,9 +1,5 @@
 package javareview;
 
-// We need people to work at BranceTech
-// I already have a Person class in this project so we're going to make a Human class
-// Humans should have a name property with a getter, a setter and a constructor
-
 public class Human {
     private String name;
 

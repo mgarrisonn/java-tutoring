@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Diary {
-    List<Page> pages = new ArrayList<>();
+    private List<Page> pages;
 
     private static String directory = "src/diary";
     private static String filename = "diary.txt";
@@ -43,15 +43,18 @@ public class Diary {
         }
 
         String userInput = getDate();
-        System.out.println("Type the body of this days entry.");
-        String userContent = input.getString();
+        if(dealWithDuplicateDates(userInput)){
+            System.out.println("There is already an entry for " + userInput);
+        }else {
+            System.out.println("Type the body of this days entry.");
+            String userContent = input.getString();
 
-        List<String> fileContents = Files.readAllLines(dataFile);
-        fileContents.add((userInput + userContent));
-        Collections.sort(fileContents);
-        this.pages = generatePages();
-
-        Files.write(dataFile, fileContents);
+            List<String> fileContents = Files.readAllLines(dataFile);
+            fileContents.add((userInput + userContent));
+            Collections.sort(fileContents);
+            Files.write(dataFile, fileContents);
+            this.pages = generatePages();
+        }
     }
 
     private static String getDate(){
@@ -83,5 +86,24 @@ public class Diary {
         }
 
         return returnList;
+    }
+
+    private boolean dealWithDuplicateDates(String date){
+        boolean isDuplicate = false;
+
+        for(int i = 0; i < this.pages.size(); i++){
+            if(this.pages.get(i).getDate().equals(date)){
+                isDuplicate = true;
+            }
+        }
+        return isDuplicate;
+    }
+
+    public List<Page> getPages() {
+        return pages;
+    }
+
+    public void setPages(List<Page> pages) {
+        this.pages = pages;
     }
 }

@@ -9,9 +9,7 @@ public class Page {
         this.content = fileIoString.substring(10);
     }
 
-    Page(String date, String content){
-        this.date = date;
-        this.content = content;
+    public Page() {
     }
 
     public String getDate() {

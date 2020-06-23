@@ -43,8 +43,25 @@ public class Diary {
         }
 
         String userInput = getDate();
+        Page pageToAdd = new Page();
         if(dealWithDuplicateDates(userInput)){
             System.out.println("There is already an entry for " + userInput);
+            System.out.println("What would you like to do?");
+            System.out.println("1: Add to current entry");
+            System.out.println("2: Overwrite this entry");
+            System.out.println("3: Go back to main menu");
+            int dupeSelection = input.getInt(1, 3);
+            switch (dupeSelection){
+                case 1:
+                    System.out.println("TBD add current");
+                    break;
+                case 2:
+                    System.out.println("TBD overwrite");
+                    break;
+                case 3:
+                    System.out.println("Back to main.");
+                    break;
+            }
         }else {
             System.out.println("Type the body of this days entry.");
             String userContent = input.getString();
@@ -55,6 +72,19 @@ public class Diary {
             Files.write(dataFile, fileContents);
             this.pages = generatePages();
         }
+    }
+
+    private void addToCurrent(String date){
+        Page currentPage = new Page();
+        for(Page page : this.pages){
+            if(page.getDate().equals(date)){
+                currentPage = page;
+            }
+        }
+        System.out.println(currentPage.getContent());
+        System.out.println("Write what you would like to add.");
+        String newContent = currentPage.getContent() + " " + input.getString();
+        currentPage.setContent(newContent);
     }
 
     private static String getDate(){

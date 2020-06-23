@@ -4,6 +4,7 @@ public class Page {
     private String date;
     private String content;
 
+    //Constructor accepts string from file and sets the first part to the date and the rest to content
     Page(String fileIoString){
         this.date = fileIoString.substring(0, 10);
         this.content = fileIoString.substring(10);

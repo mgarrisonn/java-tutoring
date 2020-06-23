@@ -81,12 +81,21 @@ public class Diary {
             pageToAdd.setDate(userInput);
             pageToAdd.setContent(userContent);
             this.pages.add(pageToAdd);
-            updatePages(this.pages);
+            updatePages();
             this.pages = generatePages();
         }
     }
 
     //Private methods for utility
+    // Give it a page and it will show it
+    private static void showPage(Page pageToShow){
+        System.out.println(pageToShow.getDate());
+        System.out.println("==================================================================");
+        System.out.println(pageToShow.getContent());
+        System.out.println("==================================================================\n");
+    }
+
+    // Method called from addPage() if user wants to add to existing page
     private void addToCurrent(String date) throws IOException {
         Page currentPage = new Page();
         for(Page page : this.pages){
@@ -98,9 +107,10 @@ public class Diary {
         System.out.println("Write what you would like to add.");
         String newContent = currentPage.getContent() + " " + input.getString();
         currentPage.setContent(newContent);
-        updatePages(this.pages);
+        updatePages();
     }
 
+    // Method called from addPage() if user wants to overwrite existing page
     private void overwriteCurrent(String date) throws IOException {
         System.out.println("Type the new content of " + date);
         String newContent = input.getString();
@@ -110,9 +120,10 @@ public class Diary {
                 this.pages.set(i, overwritePage);
             }
         }
-        updatePages(this.pages);
+        updatePages();
     }
 
+    // Uses Regex to ensure user types a date that works with the rest of the app
     private static String getDate(){
         System.out.println("Please enter the date like so: YYYY-MM-DD");
         String userInput = input.getString();
@@ -125,6 +136,7 @@ public class Diary {
         }
     }
 
+    // Reads contents from file and returns a list of pages
     private static List<Page> generatePages() throws IOException {
         if (Files.notExists(dataDirectory)) {
             Files.createDirectories(dataDirectory);
@@ -144,7 +156,9 @@ public class Diary {
         return returnList;
     }
 
-    private static void updatePages(List<Page> updatedPages) throws IOException {
+    // Called from several methods to write to file
+    // Instanced method but grouped with other utility methods
+    private void updatePages() throws IOException {
         if (Files.notExists(dataDirectory)) {
             Files.createDirectories(dataDirectory);
         }
@@ -154,7 +168,7 @@ public class Diary {
         }
 
         List<String> pagesToStrings = new ArrayList<>();
-        for(Page page : updatedPages){
+        for(Page page : this.pages){
             String pageString = page.getDate() + page.getContent();
             pagesToStrings.add(pageString);
         }
@@ -163,6 +177,8 @@ public class Diary {
         Files.write(dataFile, pagesToStrings);
     }
 
+    // Checks if there is an existing page for the date passed to it
+    // Also Instanced but grouped with other utility methods
     private boolean dealWithDuplicateDates(String date){
         boolean isDuplicate = false;
 
@@ -172,12 +188,5 @@ public class Diary {
             }
         }
         return isDuplicate;
-    }
-
-    private static void showPage(Page pageToShow){
-        System.out.println(pageToShow.getDate());
-        System.out.println("==================================================================");
-        System.out.println(pageToShow.getContent());
-        System.out.println("==================================================================\n");
     }
 }

@@ -5,6 +5,7 @@
 2020-06-04I tried writing code to sort by date
 2020-06-05Oh boy I hope this works.
 2020-06-06Did some office hours
-2020-06-07Just another day of staying inside and coding. It was awesome.
+2020-06-07Just another day of staying inside and coding. It was awesome. Really really awesome.
 2020-06-22Wrote a diary app with File IO
+2020-06-23Showed off my diary app
 2030-01-01Panic

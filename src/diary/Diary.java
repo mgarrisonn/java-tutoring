@@ -54,10 +54,10 @@ public class Diary {
     // Call this to add a page
     // Calls static methods in case there is already a page for that date
     public void addPage() throws IOException {
-        String userInput = getDate();
+        String userDate = getDate();
         Page pageToAdd = new Page();
-        if(dealWithDuplicateDates(userInput)){
-            System.out.println("There is already an entry for " + userInput);
+        if(dealWithDuplicateDates(userDate)){
+            System.out.println("There is already an entry for " + userDate);
             System.out.println("What would you like to do?");
             System.out.println("1: Add to current entry");
             System.out.println("2: Overwrite this entry");
@@ -65,10 +65,10 @@ public class Diary {
             int dupeSelection = input.getInt(1, 3);
             switch (dupeSelection){
                 case 1:
-                    addToCurrent(userInput);
+                    addToCurrent(userDate);
                     break;
                 case 2:
-                    overwriteCurrent(userInput);
+                    overwriteCurrent(userDate);
                     break;
                 case 3:
                     System.out.println("Back to main.");
@@ -78,7 +78,7 @@ public class Diary {
             System.out.println("Type the body of this days entry.");
             String userContent = input.getString();
 
-            pageToAdd.setDate(userInput);
+            pageToAdd.setDate(userDate);
             pageToAdd.setContent(userContent);
             this.pages.add(pageToAdd);
             updatePages();
@@ -187,6 +187,7 @@ public class Diary {
                 isDuplicate = true;
             }
         }
+
         return isDuplicate;
     }
 }

@@ -11,37 +11,49 @@ import java.util.Collections;
 import java.util.List;
 
 public class Diary {
+    // Only instance property
     private List<Page> pages;
 
+    //private and static because these are only used in this class
     private static String directory = "src/diary";
     private static String filename = "diary.txt";
-    private static Input input = new Input();
-
     private static Path dataDirectory = Paths.get(directory);
     private static Path dataFile = Paths.get(directory, filename);
+    //To get user input
+    private static Input input = new Input();
 
+    // Public methods to use the diary
+    //Constructor calls static method to read the file
     public Diary() throws IOException {
         this.pages = generatePages();
     }
 
+    // Exactly what it sounds like
     public void showAllPages(){
         for(Page onePage : this.pages){
-            System.out.println(onePage.getDate());
-            System.out.println("==================================================================");
-            System.out.println(onePage.getContent());
-            System.out.println("==================================================================\n");
+            showPage(onePage);
         }
     }
 
+    // User enters date correctly formatted to see entry for that day
+    public void showPageByDate(){
+        System.out.println("Enter the date of the page you want to see.");
+        String selectedDate = getDate();
+        boolean foundIt = false;
+        for(Page singlePage : this.pages){
+            if(singlePage.getDate().equals(selectedDate)){
+                foundIt = true;
+                showPage(singlePage);
+            }
+        }
+        if(!foundIt){
+            System.out.println("There is no entry for that day.");
+        }
+    }
+
+    // Call this to add a page
+    // Calls static methods in case there is already a page for that date
     public void addPage() throws IOException {
-        if (Files.notExists(dataDirectory)) {
-            Files.createDirectories(dataDirectory);
-        }
-
-        if (! Files.exists(dataFile)) {
-            Files.createFile(dataFile);
-        }
-
         String userInput = getDate();
         Page pageToAdd = new Page();
         if(dealWithDuplicateDates(userInput)){
@@ -53,10 +65,10 @@ public class Diary {
             int dupeSelection = input.getInt(1, 3);
             switch (dupeSelection){
                 case 1:
-                    System.out.println("TBD add current");
+                    addToCurrent(userInput);
                     break;
                 case 2:
-                    System.out.println("TBD overwrite");
+                    overwriteCurrent(userInput);
                     break;
                 case 3:
                     System.out.println("Back to main.");
@@ -66,15 +78,16 @@ public class Diary {
             System.out.println("Type the body of this days entry.");
             String userContent = input.getString();
 
-            List<String> fileContents = Files.readAllLines(dataFile);
-            fileContents.add((userInput + userContent));
-            Collections.sort(fileContents);
-            Files.write(dataFile, fileContents);
+            pageToAdd.setDate(userInput);
+            pageToAdd.setContent(userContent);
+            this.pages.add(pageToAdd);
+            updatePages(this.pages);
             this.pages = generatePages();
         }
     }
 
-    private void addToCurrent(String date){
+    //Private methods for utility
+    private void addToCurrent(String date) throws IOException {
         Page currentPage = new Page();
         for(Page page : this.pages){
             if(page.getDate().equals(date)){
@@ -85,6 +98,19 @@ public class Diary {
         System.out.println("Write what you would like to add.");
         String newContent = currentPage.getContent() + " " + input.getString();
         currentPage.setContent(newContent);
+        updatePages(this.pages);
+    }
+
+    private void overwriteCurrent(String date) throws IOException {
+        System.out.println("Type the new content of " + date);
+        String newContent = input.getString();
+        Page overwritePage = new Page(date + newContent);
+        for(int i = 0; i < this.pages.size(); i++){
+            if(this.pages.get(i).getDate().equals(date)){
+                this.pages.set(i, overwritePage);
+            }
+        }
+        updatePages(this.pages);
     }
 
     private static String getDate(){
@@ -118,6 +144,25 @@ public class Diary {
         return returnList;
     }
 
+    private static void updatePages(List<Page> updatedPages) throws IOException {
+        if (Files.notExists(dataDirectory)) {
+            Files.createDirectories(dataDirectory);
+        }
+
+        if (! Files.exists(dataFile)) {
+            Files.createFile(dataFile);
+        }
+
+        List<String> pagesToStrings = new ArrayList<>();
+        for(Page page : updatedPages){
+            String pageString = page.getDate() + page.getContent();
+            pagesToStrings.add(pageString);
+        }
+
+        Collections.sort(pagesToStrings);
+        Files.write(dataFile, pagesToStrings);
+    }
+
     private boolean dealWithDuplicateDates(String date){
         boolean isDuplicate = false;
 
@@ -129,24 +174,10 @@ public class Diary {
         return isDuplicate;
     }
 
-    public void showPageByDate(){
-        System.out.println("Enter the date of the page you want to see.");
-        String selectedDate = getDate();
-        for(Page singlePage : this.pages){
-            if(singlePage.getDate().equals(selectedDate)){
-                System.out.println(singlePage.getDate());
-                System.out.println("==================================================================");
-                System.out.println(singlePage.getContent());
-                System.out.println("==================================================================\n");
-            }
-        }
-    }
-
-    public List<Page> getPages() {
-        return pages;
-    }
-
-    public void setPages(List<Page> pages) {
-        this.pages = pages;
+    private static void showPage(Page pageToShow){
+        System.out.println(pageToShow.getDate());
+        System.out.println("==================================================================");
+        System.out.println(pageToShow.getContent());
+        System.out.println("==================================================================\n");
     }
 }

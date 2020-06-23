@@ -1,9 +1,10 @@
 2020-01-02Today I didn't go outside and wrote code.
 2020-01-03Still didn't go outside. Wrote more code.
 2020-02-30Today should have never happened
+2020-05-20I don't remember. It was a while ago.
 2020-06-04I tried writing code to sort by date
 2020-06-05Oh boy I hope this works.
 2020-06-06Did some office hours
-2020-06-07Just another day of staying inside and coding.
+2020-06-07Just another day of staying inside and coding. It was awesome.
 2020-06-22Wrote a diary app with File IO
 2030-01-01Panic

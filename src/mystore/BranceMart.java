@@ -50,9 +50,9 @@ public class BranceMart {
 
 
         // DON'T LOOK HERE YET
-//        Android androidPhone = new Android(30.5, "123-456-7890", "Galaxy S50");
+//        Product androidPhone = new Android(30.5, "123-456-7890", "Galaxy S50");
 //        androidPhone.setPrice(90.30);
-//        Iphone iphone = new Iphone(40, "234-567-8901", "iPhone11");
+//        Product iphone = new Iphone(40, "234-567-8901", "iPhone11");
 //        iphone.setPrice(208.70);
     }
 }

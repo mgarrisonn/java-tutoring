@@ -25,6 +25,11 @@ public class Android extends Phone implements Product {
     }
 
     @Override
+    public void setPrice(double newPrice) {
+        this.price = newPrice;
+    }
+
+    @Override
     public int getStock() {
         return stock;
     }

@@ -182,12 +182,12 @@ public class Diary {
     private boolean dealWithDuplicateDates(String date){
         boolean isDuplicate = false;
 
-        for(int i = 0; i < this.pages.size(); i++){
-            if(this.pages.get(i).getDate().equals(date)){
+        for (Page page : this.pages) {
+            if (page.getDate().equals(date)) {
                 isDuplicate = true;
+                break;
             }
         }
-
         return isDuplicate;
     }
 }
